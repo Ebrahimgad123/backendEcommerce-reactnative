@@ -31,6 +31,9 @@ app.use(compression());
 
 // Connect DB
 connectDB();
+app.get("/", (req, res) => {
+  res.status(200).json({ message: "API is working ✅" });
+});
 
 // Routes
 app.use('/auth', authRouter);
