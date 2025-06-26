@@ -57,4 +57,4 @@ process.on("unhandledRejection", err => {
 });
 
 // Start Server
-export const handler = serverless(app);
+export default serverless(app);
