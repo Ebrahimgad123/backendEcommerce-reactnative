@@ -5,7 +5,7 @@ import User from "../models/User";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
 import { AppError } from "../utils/AppError";
-
+import path from "path";
 dotenv.config();
 
 const transporter = nodemailer.createTransport({
@@ -119,38 +119,25 @@ const loginUser = async (req: Request, res: Response, next: NextFunction) => {
 
 // ✅ VERIFY EMAIL
 const verifyEmail = async (req: Request, res: Response, next: NextFunction) => {
-  const token = req.params.id as string
+  const token = req.params.id as string;
 
-  if (!token) {
-     next(new AppError("Verification token missing", 400));
-     return
-  }
+  if (!token) return next(new AppError("Verification token missing", 400));
 
   try {
     const decoded: any = jwt.verify(token, process.env.JWT_SECRET || "secret");
     const user = await User.findById(decoded.id);
 
-    if (!user) {
-       next(new AppError("User not found", 404));
-       return
-    }
-
-    if (user.isVerified) {
-       next(new AppError("User already verified", 400));
-       return
-    }
+    if (!user) return next(new AppError("User not found", 404));
+    if (user.isVerified) return next(new AppError("User already verified", 400));
 
     user.isVerified = true;
     await user.save();
 
-     res.status(200).json({
-      success: true,
-      message: "Email verified successfully",
-    });
-    return
+    
+    const filePath = path.join(__dirname, "../views/verified.html");
+    return res.sendFile(filePath);
   } catch (err) {
-     next(new AppError("Invalid or expired token", 400));
-     return
+    return next(new AppError("Invalid or expired token", 400));
   }
 };
 
