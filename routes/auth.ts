@@ -7,6 +7,6 @@ const router = express.Router();
 
 router.post("/register",validate(createUserSchema), registerUser);
 router.post("/login",validate(loginUserSchema), loginUser);
-router.get("/verify-email", verifyEmail);
+router.get("/verify-email/:id", verifyEmail);
 
 export default router;

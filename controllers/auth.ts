@@ -41,7 +41,7 @@ const registerUser = async (req: Request, res: Response, next: NextFunction) => 
       process.env.JWT_SECRET || "secret",
       { expiresIn: "1d" }
     );
-    const verificationUrl = `${process.env.BACKEND_URL}/auth/verify-email?token=${emailToken}`;
+    const verificationUrl = `${process.env.BACKEND_URL}/auth/verify-email/${emailToken}`;
 
     try {
       await transporter.sendMail({
@@ -119,7 +119,7 @@ const loginUser = async (req: Request, res: Response, next: NextFunction) => {
 
 // ✅ VERIFY EMAIL
 const verifyEmail = async (req: Request, res: Response, next: NextFunction) => {
-  const token = req.query.token as string;
+  const token = req.params.id as string
 
   if (!token) {
      next(new AppError("Verification token missing", 400));
