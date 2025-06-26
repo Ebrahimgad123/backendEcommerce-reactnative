@@ -28,3 +28,4 @@ nodemon-debug.log
 
 # Optional: إذا كنت بتستخدم SQLite أو Mongo Memory Server
 *.sql*
+.vercel
