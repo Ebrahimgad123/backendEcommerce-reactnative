@@ -10,7 +10,7 @@ import {globalErrorHandler} from './utils/AppError';
 import { connectDB } from './config/db';
 import authRouter from './routes/auth';
 import orderRouter from './routes/order';
-
+import serverless from 'serverless-http';
 dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
@@ -57,6 +57,4 @@ process.on("unhandledRejection", err => {
 });
 
 // Start Server
-app.listen(port, () => {
-  console.log(`🚀 Server running on http://localhost:${port}`);
-});
+export const handler = serverless(app);
