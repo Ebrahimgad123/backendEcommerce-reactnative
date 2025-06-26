@@ -133,11 +133,11 @@ const verifyEmail = async (req: Request, res: Response, next: NextFunction) => {
     user.isVerified = true;
     await user.save();
 
-    
-    const filePath = path.join(__dirname, "../view/verified.html");
+    const filePath = path.join(process.cwd(), "public", "verified.html");
     return res.sendFile(filePath);
   } catch (err) {
-    return next(new AppError("Invalid or expired token", 400));
+    const failPath = path.join(process.cwd(), "public", "verification-failed.html");
+    return res.sendFile(failPath);
   }
 };
 

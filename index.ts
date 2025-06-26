@@ -28,7 +28,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(cookieParser());
 app.use(compression());
-
+app.use(express.static('public'));
 // Connect DB
 connectDB();
 app.get("/", (req, res) => {
