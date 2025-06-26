@@ -8,8 +8,16 @@
   ],
   "routes": [
     {
+      "src": "/auth/.*",
+      "dest": "index.ts"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
       "src": "/(.*)",
       "dest": "index.ts"
     }
-  ]
+  ],
+  "public": "public"
 }
