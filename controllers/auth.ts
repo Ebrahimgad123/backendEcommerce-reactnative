@@ -41,7 +41,7 @@ const registerUser = async (req: Request, res: Response, next: NextFunction) => 
       process.env.JWT_SECRET || "secret",
       { expiresIn: "1d" }
     );
-    const verificationUrl = `${process.env.CLIENT_URL}/auth/verify-email?token=${emailToken}`;
+    const verificationUrl = `${process.env.BACKEND_URL}/auth/verify-email?token=${emailToken}`;
 
     try {
       await transporter.sendMail({
