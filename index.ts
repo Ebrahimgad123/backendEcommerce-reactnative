@@ -5,11 +5,11 @@ import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 import compression from 'compression';
 import dotenv from 'dotenv';
-import { AppError } from '../utils/AppError';
-import { globalErrorHandler } from '../utils/AppError';
-import { connectDB } from '../config/db';
-import authRouter from '../routes/auth';
-import orderRouter from '../routes/order';
+import { AppError } from './utils/AppError';
+import { globalErrorHandler } from './utils/AppError';
+import { connectDB } from './config/db';
+import authRouter from './routes/auth';
+import orderRouter from './routes/order';
 
 dotenv.config();
 const app = express();
