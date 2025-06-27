@@ -10,6 +10,7 @@ import { globalErrorHandler } from './utils/AppError';
 import { connectDB } from './config/db';
 import authRouter from './routes/auth';
 import orderRouter from './routes/order';
+import userRouter from './routes/users';
 
 dotenv.config();
 const app = express();
@@ -40,6 +41,7 @@ app.get("/", (req: Request, res: Response) => {
 // Routes
 app.use('/auth', authRouter);
 app.use('/orders', orderRouter);
+app.use('/users', userRouter);
 
 // 404
 app.use((req: Request, res: Response, next: NextFunction) => {
