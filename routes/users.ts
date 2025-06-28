@@ -4,6 +4,6 @@ import { isAuthenticated } from "../middlewares/auth"
 
 const userRouter = Router()
 
-userRouter.get("/:id",isAuthenticated, getUserById)
+userRouter.get("/",isAuthenticated, getUserById)
 
 export default userRouter
