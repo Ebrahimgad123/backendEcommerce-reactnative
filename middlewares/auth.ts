@@ -28,6 +28,7 @@ export const isAuthenticated = async (req: Request, res: Response, next: NextFun
 };
 
 export const isAdmin = (req: Request, res: Response, next: NextFunction) => {
+  console.log(req.user)
   if (req.user?.role !== 'admin') {
      res.status(403).json({ error: 'you don\'t have permission' });
      return

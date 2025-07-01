@@ -33,7 +33,7 @@ const registerUser = async (req: Request, res: Response, next: NextFunction) => 
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = new User({ username, email, password: hashedPassword });
+    const newUser = new User({ username, email, password: hashedPassword ,role:"user"});
     await newUser.save();
 
     const emailToken = jwt.sign(

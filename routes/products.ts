@@ -8,6 +8,6 @@ import { uploadMultipleImages } from "../middlewares/upload"
 const ProductRouter = Router()
 
 ProductRouter.get("/", getAllProducts)
-ProductRouter.post("/create",isAdmin,isAuthenticated,validate(createProductSchema),uploadMultipleImages("images",5), createProduct)
+ProductRouter.post("/create",isAuthenticated,validate(createProductSchema),uploadMultipleImages("images",5), createProduct)
 
 export default ProductRouter
