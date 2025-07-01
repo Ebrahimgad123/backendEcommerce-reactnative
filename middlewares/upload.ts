@@ -7,9 +7,9 @@ const UPLOAD_PATH = '../uploads';
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/gif'];
 
-if (!fs.existsSync(UPLOAD_PATH)) {
-  fs.mkdirSync(UPLOAD_PATH, { recursive: true });
-}
+// if (!fs.existsSync(UPLOAD_PATH)) {
+//   fs.mkdirSync(UPLOAD_PATH, { recursive: true });
+// }
 
 const storage = multer.diskStorage({
   destination: (_req, _file, cb) => cb(null, UPLOAD_PATH),
