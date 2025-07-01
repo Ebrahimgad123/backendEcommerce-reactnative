@@ -11,6 +11,7 @@ import { connectDB } from './config/db';
 import authRouter from './routes/auth';
 import orderRouter from './routes/order';
 import userRouter from './routes/users';
+import ProductRouter from './routes/products';
 
 dotenv.config();
 const app = express();
@@ -42,7 +43,7 @@ app.get("/", (req: Request, res: Response) => {
 app.use('/auth', authRouter);
 app.use('/orders', orderRouter);
 app.use('/users', userRouter);
-
+app.use("/products",ProductRouter)
 // 404
 app.use((req: Request, res: Response, next: NextFunction) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
