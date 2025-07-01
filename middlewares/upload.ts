@@ -3,7 +3,7 @@ import path from 'path';
 import fs from 'fs';
 
 
-const UPLOAD_PATH = 'uploads';
+const UPLOAD_PATH = '../uploads';
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/gif'];
 
