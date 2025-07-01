@@ -30,7 +30,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(compression());
 app.use(express.static('public'));
-app.use('/uploads', express.static(path.join(__dirname, './uploads')));
+app.use('/uploads', express.static(path.join(__dirname, '../api/uploads')));
 
 connectDB();
 
