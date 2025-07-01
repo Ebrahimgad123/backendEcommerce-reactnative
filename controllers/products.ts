@@ -13,3 +13,21 @@ export const getAllProducts = async (req: Request, res: Response) => {
     });
   }
 };
+
+export const createProduct=async(req:Request,res:Response)=>{
+     const images = (req.files as Express.Multer.File[])?.map(file =>`https://backend-ecommerce-reactnative.vercel.app/uploads/${file.filename}`);
+
+  try {
+    const product=await Products.create(...req.body
+        ,
+        images
+    );
+    res.status(200).json({ success: true, product });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Error creating product",
+      error: (error as Error).message, 
+    });
+  }
+}

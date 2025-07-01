@@ -12,7 +12,7 @@ import authRouter from './routes/auth';
 import orderRouter from './routes/order';
 import userRouter from './routes/users';
 import ProductRouter from './routes/products';
-
+import path from "path"
 dotenv.config();
 const app = express();
 
@@ -30,8 +30,8 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(compression());
 app.use(express.static('public'));
+app.use('/uploads', express.static(path.join(__dirname, './uploads')));
 
-// Connect DB (مرة واحدة فقط)
 connectDB();
 
 // Test Route
